@@ -6,6 +6,16 @@
     <title>Prayas Portfolio Website</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://kit.fontawesome.com/4a49e8c6c4.js" crossorigin="anonymous"></script>
+    <script>
+function openMenu(){
+    document.querySelector("nav ul").style.right = "0";
+}
+
+function closeMenu(){
+    document.querySelector("nav ul").style.right = "-220px";
+}
+</script>
+
 </head>
 <body>
     <div id = "header">
@@ -20,27 +30,32 @@
         </video>
         </div>
     </div>
-    <div class="header-bar">
+        <div class="header-bar">
     <div class="nav-left">
-        <img src="LOGOPrayas.jpg" class="site-logo">
-    </div>
+        <img src="LOGOPrayas.jpeg" class="site-logo">
+    </div> 
 
-    <nav class="nav-right">
-        <ul>
-            <li><a href="#header">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#portfolio">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
+    <nav>
+    <i class="fa-solid fa-bars" onclick="openMenu()"></i>
+
+    <ul>
+        <i class="fa-solid fa-xmark" onclick="closeMenu()" style="margin-left:150px; font-size:28px;"></i>
+        <li><a href="#header">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#portfolio">Work</a></li>
+        <li><a href="https://leetcode.com/u/Prayas_Dash/">DSA-Leetcode</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
+
 </div>
         
                <div class="header-text">
                 <p>
                    MERN Stack Developer 
                 </p>
-                <h1 class="typing-text">Hi, I'm <span>Prayas</span> Dash <br><h3>A Passionate <span>Web Developer</span></h3></h1>
+                <h1 class="typing-text">Hi, I'm <span>Prayas</span> Dash <br><h3>A Passionate <span>Web Developer</span><br>and <span>Machine Learning </span>Enthusiast</h3></h1>
                </div>
         </div>
         
@@ -149,7 +164,7 @@ iterative process of feeding data to a machine learning algorithm using librarie
                 </div>
             </div>
         </div>
-        <a href="https://github.com/Prayas7846" class="btn">See more</a>
+        <a href="https://github.com/Prayas7846" class="btn">GitHub <i class="fa-brands fa-square-github"></i></a>
     </div>
 </div>
 <!-- ---------contact----------- -->
@@ -168,11 +183,11 @@ iterative process of feeding data to a machine learning algorithm using librarie
                  <a class = "btn btn2"href="MY_CV_Portfolio.pdf" download="">Download CV</a>
             </div>
             <div class="contact-right">
-                    <form >
-                        <input type="text" name="name" placeholder="Your Name" required>
-                        <input type="email" name="email" placeholder="Your Email" required>
+                    <form name="submit-to-google-sheet">
+                        <input type="text" name="Name" placeholder="Your Name" required>
+                        <input type="email" name="Email" placeholder="Your Email" required>
                         <textarea name="Message" rows="6" placeholder="Your Message" ></textarea>
-                        <button type="submit"  class="btn btn2">Submit</button>
+                        <button type="clcik"  class="btn btn2">Submit</button>
                     </form>
             </div>
         </div>
@@ -198,7 +213,17 @@ iterative process of feeding data to a machine learning algorithm using librarie
     }
 
 </script>
+<script>
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbwjof3MSi3dhWnn_sFgl73h1Ns2KIUvtYwyyDJOMI4kzfge_ruEpxEbOMO3VrIpMXg/exec'
+  const form = document.forms['submit-to-google-sheet']
+
+  form.addEventListener('submit', e => {
+    e.preventDefault()
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+      .then(response => console.log('Success!', response))
+      .catch(error => console.error('Error!', error.message))
+  })
+</script>
 </body>
 
 </html>
-
