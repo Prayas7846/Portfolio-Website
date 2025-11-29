@@ -425,7 +425,7 @@ nav .fa-solid{
 
 @media only screen and (max-width: 600px){
     #header{
-        background-image: url('/images/MobileBackground.png');
+        background-image: url('MobileBackground.png');
         background-size: cover;
         background-position: center;
     }
@@ -516,4 +516,5 @@ nav .fa-solid{
     }
 }
     
+
 
