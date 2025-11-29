@@ -4,6 +4,9 @@
     font-family: 'Poppins', sans-serif;
     box-sizing: border-box;
 }
+html{
+    scroll-behavior: smooth;
+}
 
 body {
     background-color: #080808;
@@ -69,7 +72,7 @@ body {
     left: 0;
     width: 100%;
     height: 70px;
-    background: rgba(0, 0, 0, 0.65);
+    background: rgba(0, 0, 0, 1);
     backdrop-filter: blur(6px);
     display: flex;
     align-items: center;
@@ -94,7 +97,7 @@ nav {
 nav ul {
     display: flex;
     list-style: none;
-    gap: 35px;
+    gap: 15px;
 }
 
 nav ul li a {
@@ -168,7 +171,7 @@ nav ul li a:hover {
     flex-basis: 35%;
 }
 .about-col-1 img{
-     width: 80%; 
+     width: 90%; 
     border-radius: 15px;
 }
 .about-col-2{
@@ -219,24 +222,29 @@ nav ul li a:hover {
     display: block;
 }
 /* ----------------services----------------- */
-#services
+#services.sub-title
 {
     padding: 30px 50px;
 }
-.services-list{
-    display: grid;
-    grid-template-columns: repeat(auto-fit ,minmax(250px, 1fr));
-    grid-gap: 40px;
-    margin-top: 50px;
+#services {
+    padding: 80px 0;          /* equal left + right padding */
 }
-.services-list div{
+
+.services-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;                 /* equal spacing */
+    margin-top: 50px;
+    width: 90%;
+}
+
+.services-list div {
     background-color: #333333;
     padding: 40px;
-    font-size: 13;
-    font-weight: 300;
     border-radius: 10px;
     transition: background 0.5s, transform 0.5s;
 }
+
 .services-list div i{
     font-size: 50px;
     margin-bottom: 30px;
@@ -264,7 +272,7 @@ nav ul li a:hover {
 }
 
 #portfolio{
-    padding: 50px 0;
+    padding: 80px 0;
 
 }
 .work-list{
@@ -279,16 +287,18 @@ nav ul li a:hover {
     overflow:hidden;
 }
 .work img{
-    width: 80%;
+    width: 90%;          /* FULL WIDTH LIKE SERVICES */
+    height: 250px;        /* equal height */
+    object-fit: cover;    /* clean crop (no stretching) */
     border-radius: 10px;
     display: block;
     transition: transform 0.5s;
 }
 .layer{
-    width: 100%;
+    width: 95%;
     height: 0;
     background: linear-gradient(rgba(0,0,0,0), #ff004f);
-    border-radius: 10px;
+    border-radius: 5px;
     position: absolute;
     left: 0;
     bottom: 0;
@@ -305,7 +315,8 @@ nav ul li a:hover {
 .layer h3{
    font-size: larger;
    font-weight: 700;
-   margin-bottom: 20px;
+   margin-bottom: 8px;
+   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 .layer a{
     margin-top: 20px;
@@ -339,6 +350,9 @@ nav ul li a:hover {
     background: #ff004f
 }
 /* -------------- contact ------------ */
+#contact{
+    padding: 80px 0;
+}
 .contact-left{
     flex-basis: 35%;
 }
@@ -405,10 +419,101 @@ form btn2{
     color: #ff004f;
 }
 /* -------------css for small screens --------------*/
+nav .fa-solid{
+    display: none;
+}
+
 @media only screen and (max-width: 600px){
     #header{
-           background-image: url(MobileBackground.png);
+        background-image: url('/images/MobileBackground.png');
+        background-size: cover;
+        background-position: center;
+    }
+
+    .header-text{
+        margin-top: 100%;
+        font-size: 16px;
+    }
+
+    .header-text h1{
+        font-size: 30px;
+    }
+nav .fa-solid{
+        display: block;
+        font-size: 25px;
+        cursor: pointer;
+        z-index: 10000;
+    }
+
+    /* --- FIXED MOBILE NAVIGATION --- */
+    nav ul{
+        position: fixed;
+        top: 0;
+        right: -220px;        /* hidden by default */
+        width: 200px;
+        height: 100vh;
+        background: #ff004f;
+        padding-top: 80px;
+
+        display: flex;
+        flex-direction: column;   /* vertical list */
+        gap: 25px;                /* spacing between items */
+
+        transition: right 0.7s ease;
+        z-index: 9999;
+    }
+
+    nav ul li{
+        display: block;           /* ensure vertical items */
+        margin-left: 20px;
+    }
+
+    nav ul li a{
+        font-size: 18px;
+    }
+
+    /* About section responsive fix */
+    .row{
+        flex-direction: column;
+    }
+
+    .about-col-1, .about-col-2{
+        flex-basis: 100%;
+    }
+
+    /* Services responsive grid */
+    .services-list{
+        grid-template-columns: 1fr;
+    }
+
+    /* Portfolio responsive grid */
+    .work-list{
+        grid-template-columns: 1fr;
+    }
+
+    /* Contact section responsive fix */
+    .contact-left, .contact-right{
+        flex-basis: 100%;
+    }
+    .sub-title{
+        font-size: 40px;
+    }
+    .about-col-1{
+        flex-basis: 100%;
+    }
+    .about-col-1{
+        margin-bottom: 30px;
+    }
+    .about-col-2{
+        font-size: 14px;
+    }
+    .tab-links{
+        font-size: 16px;
+        margin-right: 20px;
+    }
+    .contact-left, .contact-right{
+        flex-basis: 100%;
+    }
 }
     
-}
 
